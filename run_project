@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "Proiect AEACD - Binarizare prin Votare"
+echo "Atanasiu Alexandru-Marian, Damian Petrisor Alin, Panaitescu Cristian"
+
+python3 src/main.py
