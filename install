@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# TODO you need to install also beyond compare
+
+apt-get install python
+apt-get install python-pip
+
+pip install opencv-python

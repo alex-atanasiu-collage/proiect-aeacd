@@ -3,5 +3,11 @@
 echo "Proiect AEACD - Binarizare prin Votare"
 echo "Atanasiu Alexandru-Marian, Damian Petrisor Alin, Panaitescu Cristian"
 
-python3 src/main.py data/sample1.png bin/sample1_bin.png
-bcompare data/sample1.png bin/sample1_bin.png
+rm bin/*
+python src/main.py data/sample1.png bin/sample1_bin.png
+python src/main.py data/sample2.png bin/sample2_bin.png
+python src/main.py data/sample3.png bin/sample3_bin.png
+python src/main.py data/sample4.png bin/sample4_bin.png
+
+
+#bcompare data/sample1.png bin/sample1_bin.png
