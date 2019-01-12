@@ -24,6 +24,10 @@ def main():
 			cv_api.opencv_binarization(args.input_image, args.output_image + "_blur" + str(blur) + "_" + str(i)  + ".png", i, 255, True, blur)
 		cv_api.opencv_binarization(args.input_image, args.output_image + "_noblur_" + str(i) + ".png", i, 255, False)
 
+	cv_api.opencv_binarization_otsu(args.input_image, args.output_image + "_otsu")
+	for blur in range(3, 9, 2):
+		cv_api.opencv_binarization_otsu(args.input_image, args.output_image + "_otsu" + "_blur" + str(blur) + ".png", True, blur)
+
 
 	cv_api.opencv_binarization_adaptive(args.input_image, args.output_image + "_adaptive.png", 255, 11, 2)
 	for window_size in range(3, 19, 2):
@@ -31,6 +35,13 @@ def main():
 			cv_api.opencv_binarization_adaptive(args.input_image, args.output_image + "_adaptive_noblur" + str(window_size) + "_" + str(cst)  + ".png", 255, window_size, cst, False)
 			for blur in range(3, 9, 2):
 				cv_api.opencv_binarization_adaptive(args.input_image, args.output_image + "_adaptive_blur" + str(blur) + "_" + str(window_size) + "_" + str(cst)  + ".png", 255, window_size, cst, True, blur)
+
+	cv_api.opencv_binarization_adaptive_gaussian(args.input_image, args.output_image + "adaptive_gaussian.png", 255, 11, 2)
+	for window_size in range(3, 19, 2):
+		for cst in range(0, 5):
+			cv_api.opencv_binarization_adaptive_gaussian(args.input_image, args.output_image + "_adaptive_gaussian_noblur" + str(window_size) + "_" + str(cst)  + ".png", 255, window_size, cst, False)
+			for blur in range(3, 9, 2):
+				cv_api.opencv_binarization_adaptive_gaussian(args.input_image, args.output_image + "_adaptive_gaussian_blur" + str(blur) + "_" + str(window_size) + "_" + str(cst)  + ".png", 255, window_size, cst, True, blur)
 
 
 """

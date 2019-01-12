@@ -1,6 +1,20 @@
 import cv2 as cv
 import numpy as np
 
+def opencv_binarization_otsu(input_path, output_path, blur = True, blurLevel=5, write_frame=False):
+	# print(input_path + " -> " + output_path + " with thr_val=" + str(thr) + " and max_val=" + str(max))
+	img = cv.imread(input_path, 0)
+	if blur:
+		img = cv.GaussianBlur(img,(blurLevel,blurLevel),0)
+
+	thr, result = cv.threshold(img,125,255,cv.THRESH_BINARY+cv.THRESH_OTSU)
+
+	if write_frame:
+		font = cv.FONT_HERSHEY_SIMPLEX
+		# cv.putText(result, "thr=" + str(thr), (0, 20), font, 0.8, (128, 128,128), 2, cv.LINE_AA)
+
+	cv.imwrite(output_path, result)
+
 def opencv_binarization(input_path, output_path, thr, max, blur = True, blurLevel=5, write_frame=False):
 	print(input_path + " -> " + output_path + " with thr_val=" + str(thr) + " and max_val=" + str(max))
 	img = cv.imread(input_path, 0)
@@ -28,7 +42,18 @@ def opencv_binarization_adaptive(input_path, output_path, max, window, cst, blur
 
 	cv.imwrite(output_path, result)
 
+def opencv_binarization_adaptive_gaussian(input_path, output_path, max, window, cst, blur=True, blurLevel=5, write_frame=False):
+	img = cv.imread(input_path, 0)
+	img = cv.medianBlur(img, 5)
 
+	result = cv.adaptiveThreshold(img, max, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, window, cst)
+
+	if write_frame:
+		font = cv.FONT_HERSHEY_SIMPLEX
+		cv.putText(result, "win=" + str(window) + ",cst=" + str(cst), (0, 20), font, 0.8, (128, 128,128), 2, cv.LINE_AA)
+
+
+	cv.imwrite(output_path, result)
 
 
 #def opencv_adaptiveBinarization(input_path, output_path, levels, 
