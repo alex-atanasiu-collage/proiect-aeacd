@@ -44,6 +44,14 @@ def main():
 				cv_api.opencv_binarization_adaptive_gaussian(args.input_image, args.output_image + "_adaptive_gaussian_blur" + str(blur) + "_" + str(window_size) + "_" + str(cst)  + ".png", 255, window_size, cst, True, blur)
 
 
+	cv_api.opencv_binarization_integral_image(args.input_image, args.output_image + "integral_image.png", 10, 10, False)
+	for window_size in range(4, 20, 2):
+		for percent in range(10, 90, 10):
+			cv_api.opencv_binarization_integral_image(args.input_image, args.output_image + "integral_image_noblur" + str(window_size) + "_" + str(percent)  + ".png", window_size, percent, False)
+			for blur in range(3, 9, 2):
+				cv_api.opencv_binarization_integral_image(args.input_image, args.output_image + "integral_image_blur" + str(blur) + "_" + str(window_size) + "_" + str(percent)  + ".png", 255, window_size, percent, True, blur)
+
+
 """
 	im = Image.open(args.input_image)
 
