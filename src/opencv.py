@@ -1,7 +1,7 @@
 import cv2 as cv
 import numpy as np
 
-def opencv_binarization(input_path, output_path, thr, max, blur = True, blurLevel=5, write_frame=True):
+def opencv_binarization(input_path, output_path, thr, max, blur = True, blurLevel=5, write_frame=False):
 	print(input_path + " -> " + output_path + " with thr_val=" + str(thr) + " and max_val=" + str(max))
 	img = cv.imread(input_path, 0)
 	if blur:
@@ -15,7 +15,7 @@ def opencv_binarization(input_path, output_path, thr, max, blur = True, blurLeve
 
 	cv.imwrite(output_path, result)
 
-def opencv_binarization_adaptive(input_path, output_path, max, window, cst, blur=True, blurLevel=5, write_frame=True):
+def opencv_binarization_adaptive(input_path, output_path, max, window, cst, blur=True, blurLevel=5, write_frame=False):
 	img = cv.imread(input_path, 0)
 	img = cv.medianBlur(img, 5)
 
