@@ -20,6 +20,11 @@ def histogram(image_path):
 
     return HistogramData(int(hist[0][0]), int(hist[-1][0]))
 
+def histogramImage(img):
+    hist = cv.calcHist([img],[0],None,[256],[0,256])
+
+    return HistogramData(int(hist[0][0]), int(hist[-1][0]))
+
 def main():
     parser = argparse.ArgumentParser(description="Binarization pipeline.")
     parser.add_argument('input_image', action='store', help='Input image for pipeline binarization')
